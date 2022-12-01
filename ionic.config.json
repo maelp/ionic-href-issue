@@ -1,0 +1,7 @@
+{
+  "name": "ionic-href-issue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
