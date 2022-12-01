@@ -18,6 +18,15 @@
       </ion-header>
       
       <ion-list>
+        <ion-label>
+          Use href elements
+        </ion-label>
+        <ion-toggle v-model="useHrefElements"></ion-toggle>
+      </ion-list>
+
+      <ion-list v-if="useHrefElements">
+        <MessageListItemHref v-for="message in messages" :key="message.id" :message="message" />
+        </ion-list><ion-list>
         <MessageListItem v-for="message in messages" :key="message.id" :message="message" />
       </ion-list>
     </ion-content>
@@ -25,8 +34,9 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, IonLabel, IonToggle } from '@ionic/vue';
 import MessageListItem from '@/components/MessageListItem.vue';
+import MessageListItemHref from '@/components/MessageListItemHref.vue';
 import { defineComponent } from 'vue';
 import { getMessages } from '@/data/messages';
 
@@ -34,7 +44,8 @@ export default defineComponent({
   name: 'HomePage',
   data() {
     return {
-      messages: getMessages()
+      messages: getMessages(),
+      useHrefElements: false
     }
   },
   methods: {
@@ -53,7 +64,8 @@ export default defineComponent({
     IonRefresherContent,
     IonTitle,
     IonToolbar,
-    MessageListItem
+    MessageListItemHref,
+    MessageListItem,IonLabel, IonToggle
   },
 });
 </script>
